@@ -67,9 +67,18 @@ class Program{
         
         
         
-        using (StreamWriter writer = new StreamWriter("data.txt")){
-            foreach (Task task in tasks){
-            Console.WriteLine($"{task.getTaskName()}~{task.getTaskDate()}");
+        // using (StreamWriter writer = new StreamWriter("data.txt")){
+        //     foreach (Task task in tasks){
+        //     writer.WriteLine($"{task.getTaskName()}~{task.getTaskDate()}");
+        // }
+
+        using(StreamReader reader = new StreamReader("data.txt")){
+            string line = reader.ReadLine();
+            string[] parts = line.Split("~");
+
+            Console.WriteLine($"{parts[0]} and {parts[1]}");
+
+
         }
         
         }
@@ -78,4 +87,4 @@ class Program{
 
     }
 
-}
+
