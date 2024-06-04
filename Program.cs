@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 class Program{
     
@@ -7,17 +8,17 @@ class Program{
 
         private class Task{
 
-            private string? taskName;
+            private string taskName;
             private DateTime date;
 
-            public void setTaskName (string? _taskName) { 
+            public void setTaskName (string _taskName) { 
 
                 taskName = _taskName;
 
             }
 
             public string getTaskName(){
-                return taskName ?? "";
+                return taskName;
             }
 
             public void setTaskDate(DateTime _date)
@@ -64,12 +65,17 @@ class Program{
             
         }
         
-        foreach (Task task in tasks){
-            Console.WriteLine($"Your task {task.getTaskName()} is due {task.getTaskDate()}");
+        
+        
+        using (StreamWriter writer = new StreamWriter("data.txt")){
+            foreach (Task task in tasks){
+            Console.WriteLine($"{task.getTaskName()}~{task.getTaskDate()}");
         }
-        Console.WriteLine(tasks);
+        
+        }
+        
+        
 
     }
 
 }
-
