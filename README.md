@@ -16,5 +16,5 @@ The program was written in C# programming language.
 
 # Useful Websites
 
-* [YouTube](hhttps://www.youtube.com/watch?v=GhQdlIFylQ8)
+* [YouTube](https://www.youtube.com/watch?v=GhQdlIFylQ8)
 * [Codecademy](https://www.codecademy.com/learn/learn-c-sharp)
