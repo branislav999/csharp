@@ -45,7 +45,7 @@ class Program{
             
             
             
-            Console.WriteLine("This is the menu: \n1.Add the task \n2.Print out the tasks \n3.See the upcoming tasks \n4.Save tasks to a file 5.Display tasks from a file \n0.Quit the program");
+            Console.WriteLine("This is the menu: \n1.Add the task \n2.Print out the tasks \n3.See the upcoming tasks \n4.Save tasks to a file \n5.Display tasks from a file \n0.Quit the program");
             
 
             Console.WriteLine("What is your choice(1-5): ");
@@ -59,7 +59,7 @@ class Program{
                 
                 case 2:
                     foreach (Task task in tasks){
-                        Console.WriteLine($"Task: {task.getTaskName()} is due {task.getTaskDate()}");
+                        Console.WriteLine($"Task: {task.getTaskName()} is due {task.getTaskDate().ToShortDateString()}");
                     }
                     break;
                     
@@ -118,12 +118,21 @@ class Program{
     
     
         public void UpcomingTasks(List<Task> tasks){
+            
+            bool noUpcoming = true;
+            
             foreach(Task task in tasks ){
-                if (task.getTaskDate() < DateTime.Today){
-                    TimeSpan difference = DateTime.Today - task.getTaskDate();
+                if (task.getTaskDate() > DateTime.Today){
+                    TimeSpan difference = task.getTaskDate() - DateTime.Today;
                     Console.WriteLine($"Your task is: {task.getTaskName()}. It is due in {difference.Days} days");
+                    noUpcoming = false;
+                    }
                 }
-            }
+                if (noUpcoming){
+                    Console.WriteLine("No upcoming tasks. ");
+                }
+            
+            
         }
         
         
